@@ -14,6 +14,8 @@ When you open up the planner you are able to see a title, subtitle, and the curr
 
 ## Credits 
 
+Utilized [stack overflow](https://stackoverflow.com/questions/75228484/unable-to-correctly-pull-or-display-from-localstorage-using-jquery) to figure out how to use ids to assign keys in local storage. 
+
 N/A
 
 ## License 
@@ -22,4 +24,4 @@ Please refer to license in the repo.
 
 ## Deployed Application w/ Screenshot
 [Deployed Application](https://pbullock08.github.io/daily-work-planner/)
-![image]()
+![image](./assets/images/deployed-app.png)
