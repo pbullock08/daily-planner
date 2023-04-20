@@ -14,9 +14,7 @@ When you open up the planner you are able to see a title, subtitle, and the curr
 
 ## Credits 
 
-Utilized [stack overflow](https://stackoverflow.com/questions/75228484/unable-to-correctly-pull-or-display-from-localstorage-using-jquery) to figure out how to use ids to assign keys in local storage. 
-
-N/A
+Utilized [stack overflow](https://stackoverflow.com/questions/75228484/unable-to-correctly-pull-or-display-from-localstorage-using-jquery) to figure out how to create keys using existing ids in local storage. The code created from this reference can be found in my script.js file on lines 46 - 48. 
 
 ## License 
 
