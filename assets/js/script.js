@@ -1,51 +1,14 @@
-var buttonEl = $('.saveBtn');
-var inputEl = $('textarea');
-var timeEl = $('.time-block');
+//variables for the code below in the order that they appear 
 var today = dayjs();
 var date = $('#currentDay');
+var timeEl = $('.time-block');
+var buttonEl = $('.saveBtn');
+var inputEl = $('textarea');
+var toDoArray = [];
+var msgEl = $('.displayMsg')
 
-// Wrap code in a call to jQuery to ensure that the code isn't run until the browser has finished rendering all the elements in the html
+// code is wrapped in a call to jQuery to ensure that the code isn't run until the browser has finished rendering all the elements in the html
 $(function () {
-
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-
-  buttonEl.on("click", function(event){
-    //console.log(event.target);
-    event.preventDefault();
-
-    $.each(inputEl, function(i, inputText) {
-      
-    });
-
-  }); 
-    
-  //inputText.value;
-  // // var toDo = $()
-
-  //code to apply the past, present, or future class to each time block by comparing the id to the current hour
-  function setClass() {
-    $.each(timeEl, function (i, timeBlock) {
-      if (parseInt(timeBlock.attributes[0].value) === today.$H) {
-        timeBlock.classList.add('present');
-      } else if (parseInt(timeBlock.attributes[0].value) < today.$H) {
-        timeBlock.classList.add('past');
-      } else {
-        timeBlock.classList.add('future');
-      }
-    });
-  }
-
-  setClass();
-
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-
 
   // code to display the current date in the header of the page
   function setDate() {
@@ -58,7 +21,83 @@ $(function () {
     } else {
       date.text(today.format('dddd, MMMM D') + 'rd')
     }
-  } 
-
+  };
+  
   setDate();
+
+  
+  //code to apply the past, present, or future class to each time block by comparing the id to the current hour
+  function setClass() {
+    $.each(timeEl, function (i, timeBlock) {
+      if (parseInt(timeBlock.attributes[0].value) === today.$H) {
+        timeBlock.classList.add('present');
+      } else if (parseInt(timeBlock.attributes[0].value) < today.$H) {
+        timeBlock.classList.add('past');
+      } else {
+        timeBlock.classList.add('future');
+      }
+    });
+  };
+
+  setClass();
+
+  // TODO: Add a listener for click events on the save button. This code should
+  // use the id in the containing time-block as a key to save the user input in
+  // local storage. HINT: What does `this` reference in the click listener
+  // function? How can DOM traversal be used to get the "hour-x" id of the
+  // time-block containing the button that was clicked? How might the id be
+  // useful when saving the description in local storage?
+
+  // put to-dos in local storage 
+  function setItems() {
+    localStorage.setItem('$(this).parentElement.id', JSON.stringify(toDoArray));
+  };
+
+  // event listener on the save button to call the function to push the to-dos into local storage and display them on the webpage
+  buttonEl.on("click", function(event){
+    event.preventDefault();
+
+    $.each(inputEl, function(i, inputText) {
+      var toDos = {
+        item: inputText.value
+      };
+
+      toDoArray.push(toDos);
+
+      setItems();
+      renderItems();
+    });
+
+    //display message once to-do is saved 
+    var saveMsg = $('<p>');
+    saveMsg.text('Appointment added to localStorage ✔');
+    saveMsg.addClass('msg');
+    msgEl.append(saveMsg);
+
+    setTimeout(function() {
+      $('.msg').css('display', 'none');
+    }, 3000);
+  }); 
+
+  // TODO: Add code to get any user input that was saved in localStorage and set
+  // the values of the corresponding textarea elements. HINT: How can the id
+  // attribute of each time-block be used to do this?
+
+  //get to-dos out of local storage
+  function getItems() {
+    var storedItems = JSON.parse(localStorage.getItem('$(this).parentElement.id'));
+
+    if (storedItems !== null) {
+      toDoArray = storedItems; 
+    } else {
+      return;
+    };
+  };
+
+  //diplay to-dos on webpage 
+  function renderItems() {
+    inputText.text('inputText.value');
+  }
+
+  getItems();
 });
