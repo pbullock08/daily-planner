@@ -1,10 +1,20 @@
+/* overall styling for the webpage */
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
 
+/* styling for the header portion of the webpage */
 header {
   text-align: center;
+}
+
+.lead {
+  color: #87ceeb;
+}
+
+#currentDay {
+  color: #f6be00;
 }
 
 .displayMsg {
@@ -40,17 +50,17 @@ textarea {
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: #ffd5e5;
   color: white;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: #cbffe3;
   color: white;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: #fbd3ff;
   color: white;
 }
 

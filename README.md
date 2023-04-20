@@ -21,5 +21,5 @@ N/A
 Please refer to license in the repo. 
 
 ## Deployed Application w/ Screenshot
-[Deployed Application](pbullock08.github.io/daily-planner/)
+[Deployed Application](https://pbullock08.github.io/daily-work-planner/)
 ![image]()

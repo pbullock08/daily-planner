@@ -4,8 +4,7 @@ var date = $('#currentDay');
 var timeEl = $('.time-block');
 var buttonEl = $('.saveBtn');
 var inputEl = $('textarea');
-var toDoArray = [];
-var msgEl = $('.displayMsg')
+var msgEl = $('.displayMsg');
 
 // code is wrapped in a call to jQuery to ensure that the code isn't run until the browser has finished rendering all the elements in the html
 $(function () {
@@ -41,32 +40,13 @@ $(function () {
 
   setClass();
 
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-
-  // put to-dos in local storage 
-  function setItems() {
-    localStorage.setItem('$(this).parentElement.id', JSON.stringify(toDoArray));
-  };
-
   // event listener on the save button to call the function to push the to-dos into local storage and display them on the webpage
   buttonEl.on("click", function(event){
     event.preventDefault();
 
-    $.each(inputEl, function(i, inputText) {
-      var toDos = {
-        item: inputText.value
-      };
-
-      toDoArray.push(toDos);
-
-      setItems();
-      renderItems();
-    });
+    var localItem = $(this).parent().attr('id');
+    var item = $(this).siblings('textarea').val();
+    localStorage.setItem(localItem, item);
 
     //display message once to-do is saved 
     var saveMsg = $('<p>');
@@ -78,26 +58,11 @@ $(function () {
       $('.msg').css('display', 'none');
     }, 3000);
   }); 
-
+  
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
 
-  //get to-dos out of local storage
-  function getItems() {
-    var storedItems = JSON.parse(localStorage.getItem('$(this).parentElement.id'));
 
-    if (storedItems !== null) {
-      toDoArray = storedItems; 
-    } else {
-      return;
-    };
-  };
 
-  //diplay to-dos on webpage 
-  function renderItems() {
-    inputText.text('inputText.value');
-  }
-
-  getItems();
 });
