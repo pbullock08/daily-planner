@@ -20,6 +20,6 @@ Utilized [stack overflow](https://stackoverflow.com/questions/75228484/unable-to
 
 Please refer to license in the repo. 
 
-## Deployed Application w/ Screenshot
+## Deployed Application
 [Deployed Application](https://pbullock08.github.io/daily-work-planner/)
-![image](./assets/images/deployed-app.png)
+![image](./assets/images/deployed-app.gif)
